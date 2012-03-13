@@ -1,0 +1,8 @@
+*.suo
+DotNetScripting/obj/
+DotNetScripting/bin/
+DotNetScriptingLoader/Debug/
+DotNetScriptingLoader/Release/
+DotNetScriptingLoader/bin/
+_ReSharper.*
+*.user
