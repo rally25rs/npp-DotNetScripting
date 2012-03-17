@@ -1,4 +1,8 @@
 *.suo
+bin/Debug/*
+bin/Release/*
+!bin/Debug/.gitignore
+!bin/Release/.gitignore
 DotNetScripting/obj/
 DotNetScripting/bin/
 DotNetScriptingLoader/Debug/
@@ -6,3 +10,5 @@ DotNetScriptingLoader/Release/
 DotNetScriptingLoader/bin/
 _ReSharper.*
 *.user
+packages/*
+!packages/repositories.config
