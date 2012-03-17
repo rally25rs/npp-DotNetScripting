@@ -17,7 +17,7 @@
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>3.5</OldToolsVersion>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -33,6 +33,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -64,19 +65,48 @@
   </Target>
   -->
   <ItemGroup>
+    <Compile Include="CSharpProgramRunner.cs" />
+    <Compile Include="Forms\RunScript.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RunScript.Designer.cs">
+      <DependentUpon>RunScript.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Settings.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Settings.Designer.cs">
       <DependentUpon>Settings.cs</DependentUpon>
     </Compile>
+    <Compile Include="NppCommands.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PluginBase.cs" />
     <Compile Include="NppPluginNETBase.cs" />
     <Compile Include="NppPluginNETHelper.cs" />
+    <Compile Include="ScriptingSessionHost.cs" />
+    <Compile Include="ScriptLanguage.cs" />
+    <Compile Include="ScriptScope.cs" />
     <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Roslyn.Compilers">
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Compilers.CSharp">
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Compilers.VisualBasic">
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Compilers.VisualBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services">
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services.CSharp">
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Roslyn.Services.VisualBasic">
+      <HintPath>..\packages\Roslyn.1.0.11014.5\lib\net40\Roslyn.Services.VisualBasic.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -84,9 +114,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectDir)$(OutDir)$(TargetFileName)" "$(SolutionDir)$(OutDir)DotNetScripting\"</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectDir)$(OutDir)*" "$(SolutionDir)$(OutDir)DotNetScripting\"</PostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\RunScript.resx">
+      <DependentUpon>RunScript.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Settings.resx">
       <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
@@ -107,5 +140,8 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

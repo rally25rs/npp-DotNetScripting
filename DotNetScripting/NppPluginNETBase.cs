@@ -89,5 +89,20 @@ namespace NppPluginNET
             return (curScintilla == 0) ? nppData._scintillaMainHandle : nppData._scintillaSecondHandle;
         }
         #endregion
+
+        public int SendScintillaMessage(SciMsg msg)
+        {
+            return SendScintillaMessage(msg, 0);
+        }
+
+        public int SendScintillaMessage(SciMsg msg, int lparam)
+        {
+            return SendScintillaMessage(msg, lparam, 0);
+        }
+
+        public int SendScintillaMessage(SciMsg msg, int lparam, int rparam)
+        {
+            return (int)Win32.SendMessage(GetCurrentScintilla(), msg, lparam, rparam);
+        }
     }
 }

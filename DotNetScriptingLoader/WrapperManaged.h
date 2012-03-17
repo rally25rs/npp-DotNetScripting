@@ -19,7 +19,7 @@ namespace NppPluginNET
 				//System::Diagnostics::Debugger::Launch();
 				String^ pluginPath = Assembly::GetExecutingAssembly()->Location;
 				String^ nppPluginsDir = Path::GetDirectoryName(pluginPath);
-				AppDomain::CurrentDomain::get()->AppendPrivatePath(nppPluginsDir + "\\RubyWow");
+				AppDomain::CurrentDomain::get()->AppendPrivatePath(nppPluginsDir + "\\DotNetScripting");
 			}
 			catch (Exception^ ex) { MessageBox::Show(ex->Message); }
 		}

@@ -43,13 +43,13 @@ BEGIN
     BEGIN
         BLOCK "080004b0"
         BEGIN
-            VALUE "CompanyName", "RubyWow"
-            VALUE "FileDescription", "RubyWow"
+            VALUE "CompanyName", "DotNetScripting"
+            VALUE "FileDescription", "DotNetScripting"
             VALUE "FileVersion", "0, 1, 0, 0"
             VALUE "InternalName", "NppPluginWrapper"
             VALUE "LegalCopyright", "Copyleft (c) 2011"
-            VALUE "OriginalFilename", "RubyWowLoader"
-            VALUE "ProductName", "RubyWowLoader"
+            VALUE "OriginalFilename", "DotNetScriptingLoader"
+            VALUE "ProductName", "DotNetScriptingLoader"
             VALUE "ProductVersion", "0, 1, 0, 0"
         END
     END
