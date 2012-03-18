@@ -22,9 +22,9 @@ namespace NppPluginNET
             Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_GOTOLINE, line, 0);
         }
 
-        public string GetLine(int line)
+        public string GetLine(int line, int bufferSize)
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder(bufferSize);
             Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_GETLINE, line, sb);
             return sb.ToString();
         }
@@ -79,9 +79,9 @@ namespace NppPluginNET
             return (int) Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_LINELENGTH, line, 0);
         }
 
-        public string GetSelectedText()
+        public string GetSelectedText(int bufferSize)
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder(bufferSize);
             Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_GETSELTEXT, 0, sb);
             return sb.ToString();
         }
@@ -109,7 +109,7 @@ namespace NppPluginNET
 
         public string GetCurrentFileName()
         {
-            var sb = new StringBuilder();
+            var sb = new StringBuilder(Win32.MAX_PATH);
             Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_GETFILENAME, Win32.MAX_PATH, sb);
             return sb.ToString();
         }

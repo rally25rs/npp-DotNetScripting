@@ -1,5 +1,4 @@
 using System;
-using System.Diagnostics;
 using System.Windows.Forms;
 using NppPluginNET.ScriptingEngines;
 
@@ -15,9 +14,6 @@ namespace NppPluginNET
 
         private void CommandMenuInit()
         {
-            //AppDomain.CurrentDomain.DomainUnload += (sender, args) => Trace.TraceInformation("npp-DotNetScripting: AppDomain Unload");
-            //AppDomain.CurrentDomain.FirstChanceException += (sender, args) => Trace.TraceInformation("npp-DotNetScripting: AppDomain FirstChanceException" + args.Exception.Message);
-            //AppDomain.CurrentDomain.UnhandledException += (sender, args) => Trace.TraceInformation("npp-DotNetScripting: AppDomain UnhandledException");
             try
             {
                 settingsManager = new SettingsManager(nppData, _pluginBaseName);

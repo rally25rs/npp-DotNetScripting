@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Threading;
 using System.Windows.Forms;
 using NppPluginNET.ScriptingEngines;
@@ -126,8 +125,10 @@ namespace NppPluginNET
 
         private string GetCurrentLine(int lineNum)
         {
-            nppCommands.SetSelectedText(nppCommands.GetLineStartPosition(lineNum), nppCommands.GetLineEndPosition(lineNum));
-            return nppCommands.GetSelectedText();
+            var startPos = nppCommands.GetLineStartPosition(lineNum);
+            var endPos = nppCommands.GetLineEndPosition(lineNum);
+            nppCommands.SetSelectedText(startPos, endPos);
+            return nppCommands.GetSelectedText(endPos - startPos + 1);
         }
 
         private static bool ScriptHasRunTooLong(int lineNum, int numOfLoops)
