@@ -1,11 +1,15 @@
-﻿using System;
+﻿using System.Windows.Forms;
 
 namespace NppPluginNET
 {
     /// <summary>
     /// Holds settings for the plugin.
     /// </summary>
-    internal class Settings
+    public class Settings
     {
+        public bool ShortcutKeyUseShift { get; set; }
+        public bool ShortcutKeyUseCtrl { get; set; }
+        public bool ShortcutKeyUseAlt { get; set; }
+        public Keys ShortcutKey { get; set; }
     }
 }

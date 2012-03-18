@@ -39,5 +39,10 @@ namespace NppPluginNET.Forms
             DialogResult = DialogResult.OK;
             Close();
         }
+
+        private void RunScript_Shown(object sender, System.EventArgs e)
+        {
+            txtScriptBefore.Focus();
+        }
     }
 }

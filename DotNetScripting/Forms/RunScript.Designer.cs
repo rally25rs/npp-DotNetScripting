@@ -251,6 +251,7 @@
             // 
             this.rdoLanguageCSharp.AutoSize = true;
             this.rdoLanguageCSharp.Checked = true;
+            this.rdoLanguageCSharp.Enabled = false;
             this.rdoLanguageCSharp.Location = new System.Drawing.Point(3, 3);
             this.rdoLanguageCSharp.Name = "rdoLanguageCSharp";
             this.rdoLanguageCSharp.Size = new System.Drawing.Size(39, 17);
@@ -262,11 +263,12 @@
             // rdoLanguageVBasic
             // 
             this.rdoLanguageVBasic.AutoSize = true;
+            this.rdoLanguageVBasic.Enabled = false;
             this.rdoLanguageVBasic.Location = new System.Drawing.Point(48, 3);
             this.rdoLanguageVBasic.Name = "rdoLanguageVBasic";
-            this.rdoLanguageVBasic.Size = new System.Drawing.Size(82, 17);
+            this.rdoLanguageVBasic.Size = new System.Drawing.Size(319, 17);
             this.rdoLanguageVBasic.TabIndex = 1;
-            this.rdoLanguageVBasic.Text = "Visual Basic";
+            this.rdoLanguageVBasic.Text = "Visual Basic (Sorry, VB.NET is not supported by Roslyn... yet?)";
             this.rdoLanguageVBasic.UseVisualStyleBackColor = true;
             // 
             // RunScript
@@ -280,6 +282,7 @@
             this.Name = "RunScript";
             this.ShowIcon = false;
             this.Text = "Run a .NET Script";
+            this.Shown += new System.EventHandler(this.RunScript_Shown);
             this.pnlButtons.ResumeLayout(false);
             this.pnlScript.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);

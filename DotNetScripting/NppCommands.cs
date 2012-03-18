@@ -2,6 +2,12 @@
 
 namespace NppPluginNET
 {
+    /// <summary>
+    /// Wrapper methods around windows messaging calls to Notepad++ and its underlying Scintilla editor.
+    /// For info about each message, see:
+    /// http://sourceforge.net/apps/mediawiki/notepad-plus/index.php?title=Messages_And_Notifications
+    /// http://www.scintilla.org/ScintillaDoc.html
+    /// </summary>
     public class NppCommands
     {
         private NppData nppData;
@@ -99,6 +105,28 @@ namespace NppPluginNET
         public void UndoAction()
         {
             Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_UNDO, 0, 0);
+        }
+
+        public string GetCurrentFileName()
+        {
+            var sb = new StringBuilder();
+            Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_GETFILENAME, Win32.MAX_PATH, sb);
+            return sb.ToString();
+        }
+
+        public void SwitchToFile(string name)
+        {
+            Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_SWITCHTOFILE, 0, name);
+        }
+
+        public void SwitchToFile(int index)
+        {
+            Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_ACTIVATEDOC, (int)NppMsg.MAIN_VIEW, index);
+        }
+
+        public uint GetNumberOfOpenFiles()
+        {
+            return (uint)Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_GETNBOPENFILES, 0, (uint)NppMsg.MAIN_VIEW) - 1; // subtracting 1 because this always seems to return a number 1 too big.
         }
     }
 }

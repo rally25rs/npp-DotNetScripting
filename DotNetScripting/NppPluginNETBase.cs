@@ -49,10 +49,6 @@ namespace NppPluginNET
             {
                 SetToolBarIcon();
             }
-            else if (notifyCode.nmhdr.code == (uint)SciMsg.SCN_CHARADDED)
-            {
-                CharAdded((char)notifyCode.ch);
-            }
         }
         #endregion
 
