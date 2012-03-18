@@ -34,7 +34,7 @@ Technical Details
 
 This plugin is written in C# and .NET 4.
 There is also a C++ wrapper that loads the C# assembly.
-This plugin uses the [Microsoft Roslyn CP](http://www.microsoft.com/download/en/details.aspx?id=27746#additional-information) project to execute the .NET scripts.
+This plugin uses the [Microsoft Roslyn CTP](http://www.microsoft.com/download/en/details.aspx?id=27746#additional-information) project to execute the .NET scripts.
 
 Usage
 ------
@@ -53,8 +53,8 @@ line of text in the editor to be changed.
 
 Setting the current line variable (_) to null will instruct the plugin to delete the current line.
 
-> if(shouldDeleteThisLine)
->     _ = null;
+    if(shouldDeleteThisLine)
+        _ = null;
 
 ###Bookmark current line.
 
@@ -71,42 +71,42 @@ Usage Examples
 
 Text:
 
-> one
-> two
-> three
+    one
+    two
+    three
 
 Script (For Each Line):
 
-> _ = _ + "\r\n";
+    _ = _ + "\r\n";
 
 Resulting Text:
 
-> one
->
-> two
-> 
-> three
->
+    one
+    
+    two
+    
+    three
+    
 
 ###Prefix each line with a line number.
 
 Text:
 
-> one
-> two
-> three
+    one
+    two
+    three
 
 Script (Before File):
 
-> var x = 0;
+    var x = 0;
 
 Script (For Each Line):
 
-> x++;
-> _ = x + ": " + _;
+    x++;
+    _ = x + ": " + _;
 
 Resulting Text:
 
-> 1: one
-> 2: two
-> 3: three
+    1: one
+    2: two
+    3: three
