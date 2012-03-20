@@ -1,4 +1,6 @@
 *.suo
+*.sdf
+*.opensdf
 bin/Debug/*
 bin/Release/*
 !bin/Debug/.gitignore
