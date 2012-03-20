@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace NppPluginNET.Forms
+namespace DotNetScripting.Forms
 {
     public partial class SettingsWindow : Form
     {

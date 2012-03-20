@@ -1,4 +1,4 @@
-namespace NppPluginNET.ScriptingEngines
+namespace DotNetScripting.ScriptingEngines
 {
     internal interface IScriptingEngineRunner
     {

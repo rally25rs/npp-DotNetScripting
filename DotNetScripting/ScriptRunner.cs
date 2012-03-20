@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading;
 using System.Windows.Forms;
-using NppPluginNET.ScriptingEngines;
+using DotNetScripting.ScriptingEngines;
 
-namespace NppPluginNET
+namespace DotNetScripting
 {
     /// <summary>
     /// This class handles running the user-entered script code against files open in Notepad++.
@@ -67,7 +67,7 @@ namespace NppPluginNET
             }
             catch (Exception e)
             {
-                MessageBox.Show(e.Message, PluginBase.APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(e.Message, DotNetScriptingPlugin.APP_NAME, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 performUndo = true;
             }
             finally
@@ -137,7 +137,7 @@ namespace NppPluginNET
             {
                 MessageBox.Show(
                     "Line " + lineNum + " caused the .NET Scripting Plugin to infinite loop. Execution has been halted.",
-                    PluginBase.APP_NAME,
+                    DotNetScriptingPlugin.APP_NAME,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Exclamation);
                 return true;

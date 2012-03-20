@@ -1,6 +1,7 @@
 ﻿using System.Text;
+using NppPluginNET;
 
-namespace NppPluginNET
+namespace DotNetScripting
 {
     /// <summary>
     /// Wrapper methods around windows messaging calls to Notepad++ and its underlying Scintilla editor.
@@ -126,7 +127,7 @@ namespace NppPluginNET
 
         public uint GetNumberOfOpenFiles()
         {
-            return (uint)Win32.SendMessage(nppData._nppHandle, NppMsg.NPPM_GETNBOPENFILES, 0, (uint)NppMsg.MAIN_VIEW) - 1; // subtracting 1 because this always seems to return a number 1 too big.
+            return (uint)Win32.SendMessage(nppData._nppHandle, NppMsg.PRIMARY_VIEW, 0, (uint)NppMsg.MAIN_VIEW);
         }
     }
 }

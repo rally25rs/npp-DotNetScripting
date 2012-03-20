@@ -1,4 +1,4 @@
-﻿namespace NppPluginNET.Forms
+﻿namespace DotNetScripting.Forms
 {
     partial class RunScript
     {

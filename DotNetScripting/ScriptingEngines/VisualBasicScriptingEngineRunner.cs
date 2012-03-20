@@ -1,6 +1,6 @@
 //using Roslyn.Scripting.VisualBasic; DOES NOT EXIST
 
-namespace NppPluginNET.ScriptingEngines
+namespace DotNetScripting.ScriptingEngines
 {
     /// <summary>
     /// This class was intended to handle running VB.NET scripts,

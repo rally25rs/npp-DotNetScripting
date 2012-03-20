@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace NppPluginNET
+namespace DotNetScripting
 {
     /// <summary>
     /// Holds settings for the plugin.

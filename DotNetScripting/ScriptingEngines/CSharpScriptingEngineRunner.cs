@@ -5,11 +5,10 @@ using System.Text.RegularExpressions;
 using Roslyn.Scripting;
 using Roslyn.Scripting.CSharp;
 
-namespace NppPluginNET.ScriptingEngines
+namespace DotNetScripting.ScriptingEngines
 {
     internal class CSharpScriptingEngineRunner : IScriptingEngineRunner
     {
-        private readonly NppCommands nppCommands;
         private readonly string scriptBefore;
         private readonly string scriptLine;
         private readonly string scriptAfter;
@@ -18,9 +17,8 @@ namespace NppPluginNET.ScriptingEngines
         private readonly Session scriptEngineSession;
         private readonly IEnumerable<string> importedNamespaces;
 
-        public CSharpScriptingEngineRunner(NppCommands nppCommands, string scriptBefore, string scriptLine, string scriptAfter)
+        public CSharpScriptingEngineRunner(string scriptBefore, string scriptLine, string scriptAfter)
         {
-            this.nppCommands = nppCommands;
             this.scriptBefore = scriptBefore;
             this.scriptLine = scriptLine;
             this.scriptAfter = scriptAfter;

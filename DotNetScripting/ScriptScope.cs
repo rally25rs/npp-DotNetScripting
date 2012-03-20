@@ -1,4 +1,4 @@
-namespace NppPluginNET
+namespace DotNetScripting
 {
     public enum ScriptScope
     {

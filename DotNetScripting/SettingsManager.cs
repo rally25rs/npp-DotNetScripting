@@ -2,8 +2,9 @@
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
+using NppPluginNET;
 
-namespace NppPluginNET
+namespace DotNetScripting
 {
     /// <summary>
     /// Loads and Saves settings to a file.
@@ -68,13 +69,13 @@ namespace NppPluginNET
         private string GetSettingValue(string iniFilePath, string settingName, string defaultValue)
         {
             var returnString = new StringBuilder(Win32.MAX_PATH);
-            Win32.GetPrivateProfileString(PluginBase.APP_NAME, settingName, defaultValue, returnString, Win32.MAX_PATH, iniFilePath);
+            Win32.GetPrivateProfileString(DotNetScriptingPlugin.APP_NAME, settingName, defaultValue, returnString, Win32.MAX_PATH, iniFilePath);
             return returnString.ToString();
         }
 
         private void SaveSettingValue(string iniFilePath, string settingName, string settingValue)
         {
-            Win32.WritePrivateProfileString(PluginBase.APP_NAME, settingName, settingValue, iniFilePath);
+            Win32.WritePrivateProfileString(DotNetScriptingPlugin.APP_NAME, settingName, settingValue, iniFilePath);
         }
 
         private bool StringToBool(string value)
