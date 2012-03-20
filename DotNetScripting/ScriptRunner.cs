@@ -83,12 +83,12 @@ namespace DotNetScripting
             var lineNum = 0;
             var numOfLoops = 0;
             var lastLine = false;
-            while (lastLine || lineNum < nppCommands.GetLineCount())
+            while (!lastLine && lineNum < nppCommands.GetLineCount())
             {
                 numOfLoops++;
                 if (ScriptHasRunTooLong(lineNum, numOfLoops))
                     return;
-                lastLine = IsOnLastLine(lineNum);
+                lastLine = nppCommands.IsOnLastLine(lineNum);
                 var line = GetCurrentLine(lineNum);
                 var newLine = scriptingEngine.RunLine(line);
                 lineNum += ReplaceTextIfItChanged(lineNum, line, newLine);
@@ -96,21 +96,9 @@ namespace DotNetScripting
             }
         }
 
-        /// <summary>
-        /// See if we are on the last line.
-        /// if so, then this should be the last loop.
-        /// This was done to prevent an infinite loop at the end when
-        /// the script adds a newline to the end of the file, then
-        /// it shouldnt process that added newline.
-        /// </summary>
-        private bool IsOnLastLine(int lineNum)
-        {
-            return lineNum == nppCommands.GetLineCount();
-        }
-
         private int ReplaceTextIfItChanged(int lineNum, string oldLine, string newLine)
         {
-            if (oldLine == null)
+            if (newLine == null)
             {
                 nppCommands.DeleteLine(lineNum);
                 return 0;
@@ -133,7 +121,7 @@ namespace DotNetScripting
 
         private static bool ScriptHasRunTooLong(int lineNum, int numOfLoops)
         {
-            if (numOfLoops == Int32.MaxValue)
+            if (numOfLoops >= Int32.MaxValue)
             {
                 MessageBox.Show(
                     "Line " + lineNum + " caused the .NET Scripting Plugin to infinite loop. Execution has been halted.",

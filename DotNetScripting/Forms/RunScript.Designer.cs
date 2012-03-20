@@ -121,6 +121,7 @@
             // txtScriptAfter
             // 
             this.txtScriptAfter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtScriptAfter.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScriptAfter.Location = new System.Drawing.Point(3, 16);
             this.txtScriptAfter.Multiline = true;
             this.txtScriptAfter.Name = "txtScriptAfter";
@@ -143,6 +144,7 @@
             // txtScriptLine
             // 
             this.txtScriptLine.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtScriptLine.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScriptLine.Location = new System.Drawing.Point(3, 16);
             this.txtScriptLine.Multiline = true;
             this.txtScriptLine.Name = "txtScriptLine";
@@ -165,6 +167,7 @@
             // txtScriptBefore
             // 
             this.txtScriptBefore.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtScriptBefore.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtScriptBefore.Location = new System.Drawing.Point(3, 16);
             this.txtScriptBefore.Multiline = true;
             this.txtScriptBefore.Name = "txtScriptBefore";

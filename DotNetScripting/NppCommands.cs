@@ -89,8 +89,13 @@ namespace DotNetScripting
 
         public void DeleteLine(int lineNum)
         {
+            // The SCI_LINEDELETE message seems to not work if this is the last line of the file.
+            // If we are on the last line, use SCI_DELETEBACK instead, which simulates "backspace".
             MoveToLine(lineNum);
-            Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_LINEDELETE, 0, 0);
+            if (IsOnLastLine(lineNum))
+                Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_DELETEBACK, 0, 0);
+            else
+                Win32.SendMessage(nppData._scintillaMainHandle, SciMsg.SCI_LINEDELETE, 0, 0);
         }
 
         public void StartUndoAction()
@@ -128,6 +133,11 @@ namespace DotNetScripting
         public uint GetNumberOfOpenFiles()
         {
             return (uint)Win32.SendMessage(nppData._nppHandle, NppMsg.PRIMARY_VIEW, 0, (uint)NppMsg.MAIN_VIEW);
+        }
+
+        public bool IsOnLastLine(int lineNum)
+        {
+            return lineNum + 1 >= GetLineCount();
         }
     }
 }
