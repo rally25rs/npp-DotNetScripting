@@ -106,6 +106,7 @@
     <Compile Include="ScriptingEngines\VisualBasicScriptingEngineRunner.cs" />
     <Compile Include="ScriptingSessionHost.cs" />
     <Compile Include="ScriptLanguage.cs" />
+    <Compile Include="RunScriptData.cs" />
     <Compile Include="ScriptRunner.cs" />
     <Compile Include="ScriptScope.cs" />
     <Compile Include="Settings.cs" />

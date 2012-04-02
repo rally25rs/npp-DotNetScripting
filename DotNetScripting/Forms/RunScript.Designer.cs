@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlButtons = new System.Windows.Forms.Panel();
+            this.lblScriptCount = new System.Windows.Forms.Label();
+            this.lblScriptHist = new System.Windows.Forms.Label();
+            this.cmdPreviousScript = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdRun = new System.Windows.Forms.Button();
             this.pnlScript = new System.Windows.Forms.Panel();
@@ -61,6 +64,9 @@
             // pnlButtons
             // 
             this.pnlButtons.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pnlButtons.Controls.Add(this.lblScriptCount);
+            this.pnlButtons.Controls.Add(this.lblScriptHist);
+            this.pnlButtons.Controls.Add(this.cmdPreviousScript);
             this.pnlButtons.Controls.Add(this.cmdCancel);
             this.pnlButtons.Controls.Add(this.cmdRun);
             this.pnlButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -68,6 +74,34 @@
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(534, 30);
             this.pnlButtons.TabIndex = 0;
+            // 
+            // lblScriptCount
+            // 
+            this.lblScriptCount.AutoSize = true;
+            this.lblScriptCount.Location = new System.Drawing.Point(108, 8);
+            this.lblScriptCount.Name = "lblScriptCount";
+            this.lblScriptCount.Size = new System.Drawing.Size(30, 13);
+            this.lblScriptCount.TabIndex = 4;
+            this.lblScriptCount.Text = "(0/0)";
+            // 
+            // lblScriptHist
+            // 
+            this.lblScriptHist.AutoSize = true;
+            this.lblScriptHist.Location = new System.Drawing.Point(34, 8);
+            this.lblScriptHist.Name = "lblScriptHist";
+            this.lblScriptHist.Size = new System.Drawing.Size(69, 13);
+            this.lblScriptHist.TabIndex = 3;
+            this.lblScriptHist.Text = "Script History";
+            // 
+            // cmdPreviousScript
+            // 
+            this.cmdPreviousScript.Location = new System.Drawing.Point(9, 3);
+            this.cmdPreviousScript.Name = "cmdPreviousScript";
+            this.cmdPreviousScript.Size = new System.Drawing.Size(23, 23);
+            this.cmdPreviousScript.TabIndex = 2;
+            this.cmdPreviousScript.Text = "<";
+            this.cmdPreviousScript.UseVisualStyleBackColor = true;
+            this.cmdPreviousScript.Click += new System.EventHandler(this.cmdPreviousScript_Click);
             // 
             // cmdCancel
             // 
@@ -223,10 +257,10 @@
             this.rdoScopeAllOpen.AutoSize = true;
             this.rdoScopeAllOpen.Location = new System.Drawing.Point(120, 3);
             this.rdoScopeAllOpen.Name = "rdoScopeAllOpen";
-            this.rdoScopeAllOpen.Size = new System.Drawing.Size(119, 17);
+            this.rdoScopeAllOpen.Size = new System.Drawing.Size(122, 17);
             this.rdoScopeAllOpen.TabIndex = 1;
             this.rdoScopeAllOpen.TabStop = true;
-            this.rdoScopeAllOpen.Text = "All OpenDocuments";
+            this.rdoScopeAllOpen.Text = "All Open Documents";
             this.rdoScopeAllOpen.UseVisualStyleBackColor = true;
             // 
             // groupBox1
@@ -287,6 +321,7 @@
             this.Text = "Run a .NET Script";
             this.Shown += new System.EventHandler(this.RunScript_Shown);
             this.pnlButtons.ResumeLayout(false);
+            this.pnlButtons.PerformLayout();
             this.pnlScript.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
@@ -325,5 +360,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.RadioButton rdoLanguageCSharp;
         private System.Windows.Forms.RadioButton rdoLanguageVBasic;
+        private System.Windows.Forms.Label lblScriptCount;
+        private System.Windows.Forms.Label lblScriptHist;
+        private System.Windows.Forms.Button cmdPreviousScript;
     }
 }

@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using DotNetScripting.Forms;
 using DotNetScripting.ScriptingEngines;
 using NppPluginNET;
 
@@ -7,10 +8,12 @@ namespace DotNetScripting
 {
     internal class DotNetScriptingPlugin
     {
-        private readonly NppData nppData;
+
         public const string APP_NAME = "DotNetScripting";
         public const string ERROR_WINDOW_TITLE = "DotNetScripting Plugin";
-
+        
+        private readonly NppData nppData;
+        private readonly RunScript dlgRunScript;
         private readonly SettingsManager settingsManager;
         private Settings settings;
 
@@ -20,6 +23,7 @@ namespace DotNetScripting
         {
             this.nppData = nppData;
             this.settingsManager = settingsManager;
+            dlgRunScript = new RunScript();
         }
 
         public void CommandMenuInit()
@@ -51,18 +55,15 @@ namespace DotNetScripting
 
         private void ShowScriptRunDialog()
         {
-            using (var dlgRun = new Forms.RunScript())
-            {
-                var result = dlgRun.ShowDialog();
-                if (result == DialogResult.Cancel)
-                    return;
-                RunScript(dlgRun.Language, dlgRun.Scope, dlgRun.ScriptBefore, dlgRun.ScriptLine, dlgRun.ScriptAfter);
-            }
+            var result = dlgRunScript.ShowDialog();
+            if (result == DialogResult.Cancel)
+                return;
+            RunScript(dlgRunScript.ScriptData);
         }
 
         private void ShowSettings()
         {
-            using (var dlgSettings = new Forms.SettingsWindow(settings))
+            using (var dlgSettings = new SettingsWindow(settings))
             {
                 var dialogResult = dlgSettings.ShowDialog();
                 if (dialogResult == DialogResult.OK)
@@ -99,20 +100,20 @@ namespace DotNetScripting
             }
         }
 
-        private void RunScript(ScriptLanguage language, ScriptScope scope, string scriptBefore, string scriptLine, string scriptAfter)
+        private void RunScript(RunScriptData scriptData)
         {
             try
             {
                 var nppCommands = new NppCommands(nppData);
                 IScriptingEngineRunner scriptingEngine;
-                if (language == ScriptLanguage.CSharp)
-                    scriptingEngine = new CSharpScriptingEngineRunner(scriptBefore, scriptLine, scriptAfter);
-                else if (language == ScriptLanguage.VisualBasic)
+                if (scriptData.Language == ScriptLanguage.CSharp)
+                    scriptingEngine = new CSharpScriptingEngineRunner(scriptData.BeforeFileScript, scriptData.LineScript, scriptData.AfterFileScript);
+                else if (scriptData.Language == ScriptLanguage.VisualBasic)
                     scriptingEngine = new VisualBasicScriptingEngineRunner();
                 else
                     return;
                 var runner = new ScriptRunner(scriptingEngine, nppCommands);
-                runner.Run(scope);
+                runner.Run(scriptData.Scope);
             }
             catch (Exception e)
             {
